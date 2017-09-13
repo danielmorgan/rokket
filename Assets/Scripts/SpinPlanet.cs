@@ -13,9 +13,8 @@ public class SpinPlanet : MonoBehaviour {
     }
     
     void FixedUpdate () {
-        float rampUp = Mathf.Clamp(Time.time, 0, 15) / 15;
         Vector3 rotation = (Vector3.up).normalized * speed;
-        Quaternion deltaRotation = Quaternion.Euler(rotation * rampUp);
+        Quaternion deltaRotation = Quaternion.Euler(rotation);
         body.MoveRotation(body.rotation * deltaRotation);
     }
 }

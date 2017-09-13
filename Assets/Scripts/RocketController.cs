@@ -2,29 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(LineRenderer))]
+[RequireComponent(typeof(Rigidbody))]
 public class RocketController : MonoBehaviour {
 
     Rigidbody body;
-    LineRenderer line;
-    public float thrustAmount = 2500f;
-    bool dragging = false;
+
+    public LineRenderer line;
+    float lineOffsetY;
+    Vector3 lineEnd;
+
+    public float maxThrust = 100f;
+    public float thrustSetRate = 100f;
+    public float thrustMultiplier = 100f;
+    float thrust = 0f;
 
     void Start () {
         body = GetComponent<Rigidbody>();
-        line = GetComponent<LineRenderer>();
+        line = GetComponentInChildren<LineRenderer>();
+        lineOffsetY = line.GetPosition(0).y;
     }
 
-    void FixedUpdate () {
+    void Update () {
         if (Input.GetMouseButton(0)) {
-            // Going back, check vector3 is only going up in world context
-            Vector3 target = Vector3.up * Input.GetAxis("Mouse Y");
-            line.SetPosition(1, target);
-            Debug.Log(Input.GetAxis("Mouse Y"));
+            float thrustToApply = thrustSetRate * Time.deltaTime;
+            thrust = Mathf.Clamp(thrust += thrustToApply, 0f, maxThrust);
+        } else {
+            FireEngine(thrust);
+            thrust = 0f;
         }
+
+        lineEnd = line.GetPosition(1);
+        lineEnd.y = lineOffsetY + (thrust * 0.1f);
+        line.SetPosition(1, lineEnd);
     }
 
-    void FireEngine () {
-        body.AddForce(transform.forward * thrustAmount);
+    void FireEngine (float thrust) {
+        body.AddForce(transform.forward * thrust * thrustMultiplier);
     }
 }
