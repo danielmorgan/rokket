@@ -7,7 +7,7 @@ public class InfluencedByPlanetaryGravity : MonoBehaviour {
 
     Rigidbody body;
     public GameObject planet;
-    public float gravity = 9.807f;
+    public float gravitationalConstant = 9.807f;
     float planetMass;
 
     void Start () {
@@ -16,11 +16,11 @@ public class InfluencedByPlanetaryGravity : MonoBehaviour {
     }
 
 	void FixedUpdate () {
-        Vector3 target = planet.transform.position - transform.position;
-        float currentInverseSquareMagnitude = (planet.transform.position - transform.position).sqrMagnitude;
-        float gravityAtCurrentRange = (planetMass * gravity) / currentInverseSquareMagnitude;
+        Vector3 separation = planet.transform.position - transform.position;
+        float magnitude = Mathf.Clamp(separation.sqrMagnitude, 0f, 750f);
+        float gravityAtCurrentRange = (planetMass * gravitationalConstant) / magnitude;
         float magnitudeToApply = body.mass * gravityAtCurrentRange;
 
-        body.AddForce(target.normalized * magnitudeToApply);
+        body.AddForce(separation.normalized * magnitudeToApply);
 	}
 }
