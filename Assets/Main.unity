@@ -121,7 +121,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 22.7
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -129,19 +129,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.6777915
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.20149125
+      value: 0.00000002980233
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.20149125
+      value: 0.00000002980233
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.6777915
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_RootOrder
@@ -170,7 +170,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -56.888004
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 4445930780928538, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -183,7 +183,7 @@ Prefab:
     - target: {fileID: 114088703362795322, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
         type: 2}
       propertyPath: thrustMultiplier
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 114088703362795322, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
         type: 2}
@@ -198,7 +198,37 @@ Prefab:
     - target: {fileID: 54876551227333088, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
         type: 2}
       propertyPath: m_Constraints
-      value: 88
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 54876551227333088, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088703362795322, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
+        type: 2}
+      propertyPath: thrust
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088703362795322, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
+        type: 2}
+      propertyPath: angle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088703362795322, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
+        type: 2}
+      propertyPath: resolution
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088703362795322, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
+        type: 2}
+      propertyPath: velocity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 54876551227333088, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ab60f9f9687f49b9ae7e6712e8b2d7c, type: 2}
@@ -245,6 +275,11 @@ Prefab:
     - target: {fileID: 4140336416749938, guid: 011d08f9dd74e467c886472275577fdd, type: 2}
       propertyPath: m_LocalPosition.z
       value: -2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114764539906765264, guid: 011d08f9dd74e467c886472275577fdd,
+        type: 2}
+      propertyPath: speed
+      value: -0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 011d08f9dd74e467c886472275577fdd, type: 2}
@@ -405,16 +440,6 @@ LineRenderer:
   - {x: 0, y: 4, z: 0}
   - {x: 0, y: 4, z: 0}
   - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 1
@@ -432,15 +457,15 @@ LineRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.77205884, g: 0.12637964, b: 0.017030725, a: 1}
-      key1: {r: 1, g: 0.6647059, b: 0.3602941, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 1, g: 0.9724138, b: 0.75, a: 0}
       key3: {r: 1, g: 0.9724138, b: 0.75, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 12722
+      ctime0: 0
       ctime1: 65535
       ctime2: 65535
       ctime3: 65535
@@ -526,7 +551,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 40
+  orthographic size: 96.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
