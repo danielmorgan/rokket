@@ -2,33 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(LineRenderer))]
 public class RocketController : MonoBehaviour {
 
-    Rigidbody body;
-    LineRenderer line;
-    float lineOffsetY;
-
+	public GameObject rocket;
+	[Range(1,1000)]
 	public float thrustMultiplier = 100f;
+	[Range(1,100)]
 	public float thrust = 10f;
+	[Range(-90,90)]
 	public float angle = 45f;
+	[Range(2, 100)]
 	public int resolution = 20;
 
+	LineRenderer line;
 	float a; // angle in radians
 	float g; // magnitude of gravity (9.82)
 
     void Awake () {
-        body = GetComponent<Rigidbody>();
-        line = GetComponentInChildren<LineRenderer>();
-        lineOffsetY = line.GetPosition(0).y;
+        line = GetComponent<LineRenderer>();
+		a = Mathf.Deg2Rad * angle;
 		g = Mathf.Abs(Physics.gravity.y);
     }
 
 	void OnValidate () {
-		thrust = Mathf.Clamp(thrust, 1, 100);
-		angle = Mathf.Clamp(angle, -90, 90);
-		resolution = Mathf.Clamp(resolution, 0, 50);
-
 		if (line != null) {
 			RenderTrajectoryArc();
 		}
@@ -59,17 +56,19 @@ public class RocketController : MonoBehaviour {
 		float x = t * maxDistance;
 		float y = x * Mathf.Tan(a) - ((g * x * x) / (2 * thrust * thrust * Mathf.Cos(a) * Mathf.Cos(a)));
 
-		return new Vector3(x, y + lineOffsetY);
+		Vector3 sample = new Vector3(x, y);
+
+		return sample;
 	}
 
-    void Update () {
+    void FixedUpdate () {
 		a = Mathf.Deg2Rad * angle;
 
 		RenderTrajectoryArc();
 
 		if (Input.GetMouseButtonDown(0)) {
 			Vector3 impulse = new Vector3(Mathf.Cos(a), Mathf.Sin(a)) * thrust;
-			body.AddForce(impulse * thrustMultiplier);
-        }
+			rocket.GetComponent<Rigidbody>().AddForce(impulse * thrustMultiplier);
+		}
     }
 }
