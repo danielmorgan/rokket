@@ -58,7 +58,20 @@ public class RocketController : MonoBehaviour {
 
 		Vector3 sample = new Vector3(x, y);
 
+		sample = WrapAroundPlanet(sample);
+
 		return sample;
+	}
+
+	Vector3 WrapAroundPlanet (Vector3 p) {
+		float radius = 20.19503f;
+		float circumference = 2 * Mathf.PI * radius;
+		float theta = -(p.x / circumference) * Mathf.PI;
+
+		float x = radius * Mathf.Cos(theta);
+		float y = radius * Mathf.Sin(theta);
+
+		return new Vector3(x, y);
 	}
 
     void FixedUpdate () {
