@@ -64,9 +64,12 @@ public class RocketController : MonoBehaviour {
 	}
 
 	Vector3 WrapAroundPlanet (Vector3 p) {
-		float radius = 20.19503f;
+		// @todo get radius from planet object
+		float radius = 23f;
 		float circumference = 2 * Mathf.PI * radius;
-		float theta = -(p.x / circumference) * Mathf.PI;
+		float initialRadians = (Mathf.PI / 2);
+		float travelledRadians = -(p.x / circumference);
+		float theta = initialRadians + travelledRadians;
 
 		float x = radius * Mathf.Cos(theta);
 		float y = radius * Mathf.Sin(theta);
