@@ -6,6 +6,7 @@ using UnityEngine;
 public class RocketController : MonoBehaviour {
 
 	public GameObject rocket;
+	public GameObject planet;
 	[Range(1,1000)]
 	public float thrustMultiplier = 100f;
 	[Range(1,100)]
@@ -57,7 +58,6 @@ public class RocketController : MonoBehaviour {
 		float y = x * Mathf.Tan(a) - ((g * x * x) / (2 * thrust * thrust * Mathf.Cos(a) * Mathf.Cos(a)));
 
 		Vector3 sample = new Vector3(x, y);
-
 		sample = WrapAroundPlanet(sample);
 
 		return sample;
@@ -71,14 +71,29 @@ public class RocketController : MonoBehaviour {
 		float travelledRadians = -(p.x / circumference);
 		float theta = initialRadians + travelledRadians;
 
-		float x = radius * Mathf.Cos(theta);
-		float y = radius * Mathf.Sin(theta);
+		// How far up is the point?
+		float height = radius + p.y;
 
-		return new Vector3(x, y);
+		// Convert from polar to cartesian coords
+		float x, y;
+		x = height * Mathf.Cos(theta);
+		y = height * Mathf.Sin(theta);
+
+		// Pull it down due to gravity
+		Vector3 separation = planet.transform.position - new Vector3(x, y);
+		float magnitude = Mathf.Clamp(separation.sqrMagnitude, 0f, 750f);
+		float gravityAtCurrentRange = (planet.GetComponent<Rigidbody>().mass * g) / magnitude;
+		float gravity = rocket.GetComponent<Rigidbody>().mass * gravityAtCurrentRange;
+		Vector3 fall = separation.normalized * gravity / 10f;
+
+		// Re-convert but with new height
+		Vector3 p2 = new Vector3(x, y);
+		p2 += fall;
+		return p2;
 	}
 
     void FixedUpdate () {
-		a = Mathf.Deg2Rad * angle;
+		a = angle * Mathf.Deg2Rad;
 
 		RenderTrajectoryArc();
 

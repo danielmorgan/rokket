@@ -195,11 +195,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1678003687656386, guid: 011d08f9dd74e467c886472275577fdd, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1246846958079432, guid: 011d08f9dd74e467c886472275577fdd, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 135602853752302416, guid: 011d08f9dd74e467c886472275577fdd,
         type: 2}
@@ -432,19 +432,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocket: {fileID: 1286297650}
-  thrustMultiplier: 50
-  thrust: 34
-  angle: 45
-  resolution: 46
+  planet: {fileID: 1981403863}
+  thrustMultiplier: 150
+  thrust: 50
+  angle: 15
+  resolution: 100
 --- !u!4 &1095262275
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1095262272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 21, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2000005, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -616,7 +617,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 33.2
+  orthographic size: 58.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
